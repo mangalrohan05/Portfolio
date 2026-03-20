@@ -940,15 +940,6 @@ function openPanel() {
   document.getElementById('admin-panel').classList.add('open');
 }
 
-// First-time setup: if no hash stored, show set-password mode
-async function initAuth() {
-  const existing = localStorage.getItem('rm_pwd_hash');
-  if (!existing) {
-    document.getElementById('login-desc').textContent = 'First time? Your default password is:';
-    document.getElementById('login-hint').textContent = 'Default: rohan@2025\nChange it in the Security tab after logging in.';
-    document.getElementById('login-hint').style.whiteSpace = 'pre-line';
-  }
-}
 
 // Change password
 document.getElementById('change-pwd-btn').addEventListener('click', async () => {
