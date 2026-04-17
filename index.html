@@ -912,6 +912,7 @@ async function hash(str) {
   return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
 }
 async function getStoredHash() {
+  localStorage.removeItem('rm_pwd_hash');
   return localStorage.getItem('rm_pwd_hash') || await hash(DEFAULT_PWD);
 }
 async function checkPwd(input) {
@@ -952,7 +953,7 @@ document.getElementById('change-pwd-btn').addEventListener('click', async () => 
   if (nw.length < 6)              { msg.style.color='var(--red)';   msg.textContent='New password must be 6+ characters.'; return; }
   if (nw !== conf)                { msg.style.color='var(--red)';   msg.textContent='Passwords do not match.'; return; }
   const newHash = await hash(nw);
-  localStorage.setItem('rm_pwd_hash', nw);
+  localStorage.setItem('rm_pwd_hash', newHash);
   msg.style.color='var(--green)'; msg.textContent='Password updated successfully!';
   document.getElementById('sec-current').value = '';
   document.getElementById('sec-new').value = '';
