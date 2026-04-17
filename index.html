@@ -952,7 +952,7 @@ document.getElementById('change-pwd-btn').addEventListener('click', async () => 
   if (nw.length < 6)              { msg.style.color='var(--red)';   msg.textContent='New password must be 6+ characters.'; return; }
   if (nw !== conf)                { msg.style.color='var(--red)';   msg.textContent='Passwords do not match.'; return; }
   const newHash = await hash(nw);
-  localStorage.setItem('rm_pwd_hash', newHash);
+  localStorage.setItem('rm_pwd_hash', nw);
   msg.style.color='var(--green)'; msg.textContent='Password updated successfully!';
   document.getElementById('sec-current').value = '';
   document.getElementById('sec-new').value = '';
