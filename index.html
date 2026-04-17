@@ -912,7 +912,6 @@ async function hash(str) {
   return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
 }
 async function getStoredHash() {
-  localStorage.removeItem('rm_pwd_hash');
   return localStorage.getItem('rm_pwd_hash') || await hash(DEFAULT_PWD);
 }
 async function checkPwd(input) {
