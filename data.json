@@ -1,0 +1,187 @@
+{
+  "passwordHash": "0bdc868f63addbca52af9a9112739abc7a2677539e0afc4539f541e654f49bd9",
+  "resume": {
+    "url": "",
+    "name": ""
+  },
+  "hero": {
+    "eyebrow": "AI/ML Engineer — Jodhpur, India",
+    "nameFirst": "Rohan",
+    "nameLast": "Mangal",
+    "roles": [
+      "Computer Vision Engineer",
+      "NLP & Transformer Engineer",
+      "AI Pipeline Builder",
+      "ML Engineer in Progress"
+    ],
+    "description": "Building production-ready AI pipelines at the intersection of Computer Vision and NLP. Currently working on counterfeit detection at Wepitch — OpenCLIP, YOLOv8, Qwen-VLM.",
+    "githubUrl": "https://github.com/mangalrohan05",
+    "linkedInUrl": "https://www.linkedin.com/in/rohanm0805",
+    "stats": [
+      { "num": "5", "suffix": "+", "label": "AI Projects" },
+      { "num": "2", "suffix": "×", "label": "Internships" },
+      { "num": "4", "suffix": "th", "label": "Year B.E. IT" }
+    ]
+  },
+  "about": {
+    "title": "Who I am",
+    "paragraphs": [
+      "I'm a <strong>final-year B.E. IT student</strong> at MBM University, Jodhpur — deliberately transitioning from full-stack web engineering into AI/ML. The engineering discipline I built through MERN, FastAPI and Python now fuels a deep dive into the intelligence layer of software.",
+      "At <strong>Wepitch</strong>, I built a counterfeit product detection system — combining OpenCLIP for visual similarity, YOLOv8 for object detection, EasyOCR for label verification, and asyncio for parallel pipeline throughput (June - August 2025). My scope is growing toward LLMs and RAG-based workflows.",
+      "I approach models from <strong>first principles</strong>, not just API calls — I want to understand why a model works before I deploy it. I'm also actively working on my DSA in Java for top-tier technical interviews."
+    ],
+    "meta": [
+      { "label": "University", "value": "MBM University, Jodhpur" },
+      { "label": "Degree", "value": "B.E. Information Technology · 2023–2027" },
+      { "label": "Current Focus", "value": "Computer Vision · NLP · LLMs · RAG" },
+      { "label": "Location", "value": "Jodhpur, Rajasthan, India" },
+      { "label": "Status", "value": "Open to AI/ML Internships 2025–26", "highlight": true },
+      { "label": "Contact", "value": "rohanmangal.2019@gmail.com", "isEmail": true }
+    ]
+  },
+  "experience": [
+    {
+      "company": "Wepitch",
+      "companyShort": "WP",
+      "role": "AI Engineer Intern",
+      "team": "Global AI Team",
+      "period": "June - August 2025",
+      "tags": ["OpenCLIP", "YOLOv8", "Qwen-VLM", "SuperPoint/LightGlue", "RANSAC", "EasyOCR", "Laplace Variance", "Counterfeit Detection", "Computer Vision", "FastAPI", "asyncio"]
+    },
+    {
+      "company": "Xebia",
+      "companyShort": "XB",
+      "role": "Full Stack Engineer Intern",
+      "team": "",
+      "period": "2024 · 3 months",
+      "tags": ["MERN Stack", "REST APIs", "Node.js", "MongoDB", "React"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Authentiq",
+      "status": "Confidential",
+      "statusClass": "status-confidential",
+      "desc": "End-to-end counterfeit product detection pipeline — OpenCLIP for visual similarity, YOLOv8 for detection, SuperPoint/LightGlue for feature matching, RANSAC for geometric verification, EasyOCR for label OCR, and Laplace Variance for blur filtering.",
+      "stack": ["OpenCLIP", "YOLOv8", "SuperPoint/LightGlue", "RANSAC", "EasyOCR", "Laplace Variance", "FastAPI", "asyncio", "Python"],
+      "cat": "ai",
+      "catLabel": "AI · Computer Vision",
+      "linkText": "Private repo",
+      "linkUrl": ""
+    },
+    {
+      "name": "Fake News Detector",
+      "status": "Complete",
+      "statusClass": "status-done",
+      "desc": "Supervised text classifier to detect misleading content. DistilBERT fine-tuned with live web retrieval via gnews for real-time fact context — a lightweight RAG pipeline.",
+      "stack": ["DistilBERT", "Scikit-learn", "HuggingFace", "gnews", "Python"],
+      "cat": "ai",
+      "catLabel": "AI · NLP",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05/fake-news-detector"
+    },
+    {
+      "name": "ChatLens",
+      "status": "Active",
+      "statusClass": "status-active",
+      "desc": "WhatsApp chat analyser with sentiment analysis, activity heatmaps, word clouds, and per-user NLP insights. React/Vite frontend with a dark intelligence-terminal aesthetic.",
+      "stack": ["Python", "Flask", "React", "Recharts", "NLP"],
+      "cat": "ai",
+      "catLabel": "AI · NLP",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05"
+    },
+    {
+      "name": "NeuroSign",
+      "status": "Active",
+      "statusClass": "status-active",
+      "desc": "Real-time hand sign recognition via live webcam. CNN trained on gesture datasets, with MediaPipe landmark detection as the preprocessing backbone.",
+      "stack": ["TensorFlow", "MediaPipe", "CNN", "OpenCV", "Python"],
+      "cat": "ai",
+      "catLabel": "AI · Computer Vision",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05"
+    },
+    {
+      "name": "Energy Prediction",
+      "status": "Complete",
+      "statusClass": "status-done",
+      "desc": "Regression model forecasting corporate energy consumption patterns from operational and environmental features. Scikit-learn pipeline with feature engineering and cross-validation.",
+      "stack": ["Python", "Scikit-learn", "Pandas", "Regression"],
+      "cat": "ai",
+      "catLabel": "AI · ML",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05"
+    },
+    {
+      "name": "Product Inventory App",
+      "status": "Complete",
+      "statusClass": "status-done",
+      "desc": "Full inventory management platform with CRUD operations, reporting, and user authentication. MERN stack with Sequelize ORM.",
+      "stack": ["MongoDB", "Express", "React", "Node.js", "Sequelize"],
+      "cat": "web",
+      "catLabel": "Web · Full Stack",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05"
+    },
+    {
+      "name": "Feedback Collection System",
+      "status": "Complete",
+      "statusClass": "status-done",
+      "desc": "Structured form submission and analytics dashboard. Real-time response aggregation with Tailwind CSS UI.",
+      "stack": ["Node.js", "MongoDB", "Tailwind CSS", "Express"],
+      "cat": "web",
+      "catLabel": "Web · Full Stack",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05"
+    }
+  ],
+  "skills": [
+    {
+      "category": "AI / ML Core",
+      "items": ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "NumPy", "Pandas", "Streamlit"]
+    },
+    {
+      "category": "Computer Vision",
+      "items": ["OpenCLIP", "YOLOv8", "OpenCV", "MediaPipe", "EasyOCR", "SuperPoint/LightGlue", "RANSAC", "Laplace Variance", "CNN"]
+    },
+    {
+      "category": "NLP & LLMs",
+      "items": ["DistilBERT", "HuggingFace", "Transformers", "Qwen-VLM", "RAG", "Fine-tuning"]
+    },
+    {
+      "category": "Backend & APIs",
+      "items": ["FastAPI", "Flask", "Node.js", "Express.js", "REST APIs", "asyncio"]
+    },
+    {
+      "category": "Frontend",
+      "items": ["React", "JavaScript", "Tailwind CSS", "HTML/CSS", "Recharts", "Vite"]
+    },
+    {
+      "category": "Databases & Tools",
+      "items": ["MongoDB", "MySQL", "Git", "Docker", "Jupyter", "Linux"]
+    }
+  ],
+  "certifications": [
+    { "name": "Oracle Cloud Infrastructure — AI/ML", "issuer": "Oracle", "status": "Verified" },
+    { "name": "Machine Learning A–Z", "issuer": "Udemy", "status": "Verified" },
+    { "name": "Python Masterclass", "issuer": "Udemy", "status": "Verified" },
+    { "name": "Full Stack Software Engineering", "issuer": "Xebia · Internship Certificate", "status": "Issued" },
+    { "name": "Web Development & Version Control Foundation", "issuer": "Let's Upgrade", "status": "Verified" },
+    { "name": "EduRishi E²MP Workshop", "issuer": "MBM University × EduRishi Eduventures", "status": "Issued" }
+  ],
+  "contact": {
+    "title": "Let's connect",
+    "description": "Final-year B.E. IT student targeting AI/ML engineering roles and research opportunities. If you're building something intelligent — let's talk.",
+    "links": [
+      { "label": "LinkedIn", "sub": "linkedin.com/in/rohanm0805", "url": "https://www.linkedin.com/in/rohanm0805", "icon": "in" },
+      { "label": "GitHub", "sub": "github.com/mangalrohan05", "url": "https://github.com/mangalrohan05", "icon": "GH" },
+      { "label": "Leetcode", "sub": "leetcode.com/u/rohan_85", "url": "https://leetcode.com/u/rohan_85/", "icon": "LC" },
+      { "label": "Email", "sub": "rohanmangal.2019@gmail.com", "url": "mailto:rohanmangal.2019@gmail.com", "icon": "@" }
+    ]
+  },
+  "footer": {
+    "text": "Rohan Mangal · MBM University, Jodhpur",
+    "year": "2025"
+  }
+}

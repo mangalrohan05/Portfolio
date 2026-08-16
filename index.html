@@ -1,0 +1,3205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rohan Mangal — AI/ML Engineer</title>
+    <meta name="description"
+        content="AI/ML Engineer specialising in Computer Vision & NLP. Building production-ready pipelines with OpenCLIP, YOLOv8, DistilBERT and FastAPI." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #080B10;
+            --bg-card: #0F1520;
+            --bg-card-hover: #151E2E;
+            --border: rgba(255, 255, 255, 0.07);
+            --border-hover: rgba(0, 200, 255, 0.3);
+            --cyan: #00C8FF;
+            --cyan-dim: rgba(0, 200, 255, 0.12);
+            --cyan-mid: rgba(0, 200, 255, 0.06);
+            --red: #FF4B6E;
+            --text: #E2E8F0;
+            --text-muted: #64748B;
+            --text-dim: #94A3B8;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: padding-top 0.3s;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            height: 60px;
+            background: rgba(8, 11, 16, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: top 0.3s;
+        }
+
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--cyan);
+            letter-spacing: 0.05em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-badge {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--cyan);
+            border: 1px solid rgba(0, 200, 255, 0.4);
+            padding: 3px 10px;
+            border-radius: 2px;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 2.5rem 80px;
+            overflow: hidden;
+        }
+
+        canvas#neural {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        .hero-inner {
+            position: relative;
+            max-width: 860px;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--cyan);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1px;
+            background: var(--cyan);
+        }
+
+        h1.hero-name {
+            font-family: var(--font-display);
+            font-size: clamp(3.2rem, 8vw, 6.5rem);
+            font-weight: 700;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        h1.hero-name span {
+            color: var(--cyan);
+        }
+
+        .hero-role {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 300;
+            color: var(--text-dim);
+            margin-bottom: 1.75rem;
+            min-height: 2em;
+        }
+
+        #role-text {
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        #cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.1em;
+            background: var(--cyan);
+            vertical-align: middle;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .hero-desc {
+            font-size: 1.0rem;
+            color: var(--text-dim);
+            max-width: 540px;
+            margin-bottom: 2.5rem;
+            line-height: 1.75;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--cyan);
+            color: #080B10;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 12px 24px;
+            border-radius: 3px;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: opacity 0.2s, transform 0.15s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--text-dim);
+            font-family: var(--font-display);
+            font-weight: 400;
+            font-size: 14px;
+            padding: 11px 24px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s, transform 0.15s;
+            cursor: pointer;
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            color: var(--text);
+            transform: translateY(-1px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .stat-num span {
+            color: var(--cyan);
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.4;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--cyan), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%,
+            100% {
+                opacity: 0.4
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 7rem 2.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--cyan);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 1px;
+            background: var(--cyan);
+        }
+
+        h2.section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 3.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ── ABOUT ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-text p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .about-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .meta-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.1rem 1.25rem;
+            transition: border-color 0.2s;
+        }
+
+        .meta-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .meta-card-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .meta-card-value {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .meta-card-value a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        /* ── EXPERIENCE ── */
+        .exp-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .exp-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.5rem 1.75rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.25rem;
+            align-items: start;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .exp-card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+        }
+
+        .exp-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 4px;
+            background: var(--cyan-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--cyan);
+            letter-spacing: 0.02em;
+            flex-shrink: 0;
+        }
+
+        .exp-role {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .exp-company {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 0.75rem;
+        }
+
+        .exp-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            padding: 3px 9px;
+            border-radius: 2px;
+            letter-spacing: 0.04em;
+        }
+
+        .tag.cyan {
+            color: var(--cyan);
+            border-color: rgba(0, 200, 255, 0.2);
+            background: var(--cyan-mid);
+        }
+
+        .exp-period {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── PROJECTS ── */
+        .project-filters {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 2px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .filter-btn.active {
+            background: var(--cyan-dim);
+            color: var(--cyan);
+            border-color: rgba(0, 200, 255, 0.35);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: border-color 0.25s, background 0.25s, transform 0.2s;
+            text-decoration: none;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .project-name {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .project-status {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            padding: 3px 8px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .status-active {
+            color: var(--cyan);
+            background: var(--cyan-mid);
+            border: 1px solid rgba(0, 200, 255, 0.2);
+        }
+
+        .status-done {
+            color: #4ADE80;
+            background: rgba(74, 222, 128, 0.08);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+
+        .status-confidential {
+            color: var(--red);
+            background: rgba(255, 75, 110, 0.08);
+            border: 1px solid rgba(255, 75, 110, 0.2);
+        }
+
+        .project-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .project-link-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .project-link {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+        }
+
+        .project-link:hover {
+            color: var(--cyan);
+        }
+
+        .project-cat-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* ── SKILLS ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .skill-group {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.25rem 1.4rem;
+        }
+
+        .skill-group-title {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--cyan);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skill-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-pill {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-dim);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .skill-pill:hover {
+            color: var(--cyan);
+            border-color: rgba(0, 200, 255, 0.25);
+        }
+
+        /* ── CERTS ── */
+        .certs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .cert-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .cert-item:hover {
+            border-color: var(--border-hover);
+        }
+
+        .cert-name {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .cert-issuer {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 3px;
+            letter-spacing: 0.05em;
+        }
+
+        .cert-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--cyan);
+            border: 1px solid rgba(0, 200, 255, 0.25);
+            padding: 3px 9px;
+            border-radius: 2px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* ── CONTACT ── */
+        #contact {
+            text-align: center;
+        }
+
+        #contact h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-sub {
+            font-size: 1.0rem;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin: 0 auto 3rem;
+            line-height: 1.75;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.85rem 1.4rem;
+            text-decoration: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+        }
+
+        .contact-link-icon {
+            font-size: 16px;
+            color: var(--cyan);
+        }
+
+        .contact-link-label {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .contact-link-sub {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        footer p {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        footer p span {
+            color: var(--cyan);
+        }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1.25rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 1.25rem;
+            }
+
+            #hero {
+                padding: 90px 1.25rem 60px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .exp-card {
+                grid-template-columns: auto 1fr;
+            }
+
+            .exp-period {
+                grid-column: 2;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ── ADMIN INTERFACE ── */
+        #admin-status-bar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 35px;
+            background: var(--red);
+            color: #080B10;
+            z-index: 1000;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+        }
+
+        body.admin-active {
+            padding-top: 35px;
+        }
+
+        body.admin-active #admin-status-bar {
+            display: flex;
+        }
+
+        body.admin-active nav {
+            top: 35px;
+        }
+
+        #admin-sidebar {
+            position: fixed;
+            top: 35px;
+            right: -520px;
+            width: 500px;
+            max-width: 100vw;
+            height: calc(100vh - 35px);
+            background: rgba(15, 21, 32, 0.98);
+            border-left: 1px solid rgba(0, 200, 255, 0.15);
+            z-index: 999;
+            transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        #admin-sidebar.open {
+            right: 0;
+        }
+
+        .admin-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h3 {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--cyan);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .admin-tabs {
+            display: flex;
+            background: rgba(0, 0, 0, 0.25);
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .admin-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .admin-tab {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-muted);
+            background: transparent;
+            border: none;
+            padding: 11px 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            white-space: nowrap;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .admin-tab:hover {
+            color: var(--text);
+        }
+
+        .admin-tab.active {
+            color: var(--cyan);
+            border-bottom-color: var(--cyan);
+        }
+
+        .admin-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .admin-tab-panel {
+            display: none;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .admin-tab-panel.active {
+            display: flex;
+        }
+
+        .admin-footer {
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            background: rgba(8, 11, 16, 0.5);
+        }
+
+        .admin-footer-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .admin-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .admin-form-group label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-dim);
+            letter-spacing: 0.03em;
+        }
+
+        .admin-input,
+        .admin-textarea,
+        .admin-select {
+            background: rgba(8, 11, 16, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            color: var(--text);
+            padding: 8px 12px;
+            font-family: var(--font-body);
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .admin-input:focus,
+        .admin-textarea:focus,
+        .admin-select:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: 0 0 8px rgba(0, 200, 255, 0.15);
+        }
+
+        .admin-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .admin-btn {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 12px;
+            padding: 8px 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .admin-btn-primary {
+            background: var(--cyan);
+            color: #080B10;
+        }
+
+        .admin-btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .admin-btn-secondary {
+            background: transparent;
+            border-color: var(--border);
+            color: var(--text-dim);
+        }
+
+        .admin-btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            color: var(--text);
+        }
+
+        .admin-btn-danger {
+            background: rgba(255, 75, 110, 0.1);
+            border-color: rgba(255, 75, 110, 0.3);
+            color: var(--red);
+        }
+
+        .admin-btn-danger:hover {
+            background: var(--red);
+            color: #fff;
+        }
+
+        .admin-list-container {
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .editor-list-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 10px 12px;
+            border-radius: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .editor-list-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .editor-list-item-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .editor-list-item-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .editor-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        .editor-mini-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            width: 26px;
+            height: 26px;
+            border-radius: 2px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .editor-mini-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .editor-mini-btn.danger:hover {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        /* Modal styling */
+        .admin-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 11, 16, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .admin-modal-overlay.open {
+            display: flex;
+        }
+
+        .admin-modal {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 200, 255, 0.2);
+            width: 100%;
+            max-width: 480px;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .admin-modal-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--cyan);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .admin-modal-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .admin-modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            background: rgba(8, 11, 16, 0.3);
+        }
+
+        #admin-floating-btn {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 998;
+            background: var(--cyan);
+            color: #080B10;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 200, 255, 0.3);
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        #admin-floating-btn:hover {
+            transform: scale(1.05);
+        }
+
+        #admin-floating-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        body.admin-active #admin-floating-btn {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ADMIN STATUS BAR -->
+    <div id="admin-status-bar">
+        <span>Admin Edit Mode Active</span>
+        <div style="display:flex; gap:10px;">
+            <button class="admin-btn admin-btn-primary" style="padding:4px 10px; font-size:10px;" onclick="toggleAdminSidebar()">Open Control Panel</button>
+            <button class="admin-btn admin-btn-danger" style="padding:4px 10px; font-size:10px;" onclick="logoutAdmin()">Logout</button>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#hero" class="nav-logo">RM</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <span class="nav-badge" id="nav-badge">Open to Roles</span>
+            <button id="admin-login-btn" title="Admin Login" style="background:transparent; border:1px solid rgba(255,255,255,0.15); color:var(--text-muted); padding: 4px 8px; border-radius: 3px; font-family: var(--font-mono); font-size:11px; cursor:pointer; display:flex; align-items:center; gap:4px; transition:all 0.2s;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <span id="login-btn-text">Login</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" style="max-width:none; padding-left:2.5rem; padding-right:2.5rem;">
+        <canvas id="neural"></canvas>
+        <div class="hero-inner">
+            <div class="hero-eyebrow" id="hero-eyebrow">AI/ML Engineer — Jodhpur, India</div>
+            <h1 class="hero-name" id="hero-name">Rohan<br /><span>Mangal</span></h1>
+            <div class="hero-role">
+                <span id="role-text"></span><span id="cursor"></span>
+            </div>
+            <p class="hero-desc" id="hero-desc">
+                Building production-ready AI pipelines at the intersection of Computer Vision and NLP.
+                Currently working on counterfeit detection at Wepitch — OpenCLIP, YOLOv8, Qwen-VLM.
+            </p>
+            <div class="hero-ctas" id="hero-ctas">
+                <!-- Dynamically Rendered -->
+            </div>
+            <div class="hero-stats" id="hero-stats">
+                <!-- Dynamically Rendered -->
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Who I am</h2>
+        <div class="about-grid reveal">
+            <div class="about-text" id="about-paragraphs">
+                <!-- Dynamically Rendered -->
+            </div>
+            <div class="about-meta" id="about-meta">
+                <!-- Dynamically Rendered -->
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="section-label">Experience</div>
+        <h2 class="section-title">Where I've worked</h2>
+        <div class="exp-list reveal" id="experience-list">
+            <!-- Dynamically Rendered -->
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-label">Projects</div>
+        <h2 class="section-title">What I've built</h2>
+
+        <div class="project-filters" id="project-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="ai">AI / ML</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+        </div>
+
+        <div class="projects-grid reveal" id="projects-grid">
+            <!-- Dynamically Rendered -->
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="section-label">Skills</div>
+        <h2 class="section-title">Tech stack</h2>
+        <div class="skills-grid reveal" id="skills-grid">
+            <!-- Dynamically Rendered -->
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+        <div class="section-label">Credentials</div>
+        <h2 class="section-title">Certifications</h2>
+        <div class="certs-list reveal" id="certs-list">
+            <!-- Dynamically Rendered -->
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-label" style="justify-content:center">Contact</div>
+        <h2 class="section-title">Let's connect</h2>
+        <p class="contact-sub" id="contact-description">
+            Final-year B.E. IT student targeting AI/ML engineering roles and research opportunities.
+            If you're building something intelligent — let's talk.
+        </p>
+        <div class="contact-links reveal" id="contact-links">
+            <!-- Dynamically Rendered -->
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer-container">
+        <!-- Dynamically Rendered -->
+    </footer>
+
+    <!-- FLOATING GEAR BUTTON (ADMIN) -->
+    <button id="admin-floating-btn" onclick="toggleAdminSidebar()" title="Admin Panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+    </button>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div class="admin-modal-overlay" id="admin-login-modal">
+        <div class="admin-modal">
+            <div class="admin-modal-header">Admin Authentication</div>
+            <div class="admin-modal-body">
+                <div class="admin-form-group">
+                    <label for="admin-password-input">Password</label>
+                    <input type="password" id="admin-password-input" class="admin-input" placeholder="••••••••••••" />
+                </div>
+            </div>
+            <div class="admin-modal-footer">
+                <button class="admin-btn admin-btn-secondary" id="close-login-btn">Cancel</button>
+                <button class="admin-btn admin-btn-primary" id="submit-login-btn">Authenticate</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN EDIT ITEM MODAL (DYNAMIC POPUPS) -->
+    <div class="admin-modal-overlay" id="admin-edit-item-modal">
+        <div class="admin-modal">
+            <div class="admin-modal-header" id="edit-item-modal-title">Edit Item</div>
+            <div class="admin-modal-body" id="edit-item-modal-body">
+                <!-- Dynamically filled by script -->
+            </div>
+            <div class="admin-modal-footer">
+                <button class="admin-btn admin-btn-secondary" onclick="closeEditItemModal()">Cancel</button>
+                <button class="admin-btn admin-btn-primary" onclick="saveItemFromModal()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN SIDEBAR -->
+    <div id="admin-sidebar">
+        <div class="admin-header">
+            <h3>Portfolio Control Panel</h3>
+            <button class="editor-mini-btn" onclick="toggleAdminSidebar()" title="Close Sidebar">✕</button>
+        </div>
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchTab(event, 'tab-hero')">Hero</button>
+            <button class="admin-tab" onclick="switchTab(event, 'tab-about')">About</button>
+            <button class="admin-tab" onclick="switchTab(event, 'tab-experience')">Experience</button>
+            <button class="admin-tab" onclick="switchTab(event, 'tab-projects')">Projects</button>
+            <button class="admin-tab" onclick="switchTab(event, 'tab-skills')">Skills</button>
+            <button class="admin-tab" onclick="switchTab(event, 'tab-certs')">Certs</button>
+            <button class="admin-tab" onclick="switchTab(event, 'tab-resume-security')">Resume/Key</button>
+        </div>
+        
+        <div class="admin-content">
+            <!-- HERO PANEL -->
+            <div class="admin-tab-panel active" id="tab-hero">
+                <div class="admin-form-group">
+                    <label>Eyebrow Tagline</label>
+                    <input type="text" id="edit-hero-eyebrow" class="admin-input" />
+                </div>
+                <div class="admin-form-group">
+                    <label>First Name</label>
+                    <input type="text" id="edit-hero-nameFirst" class="admin-input" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Last Name</label>
+                    <input type="text" id="edit-hero-nameLast" class="admin-input" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Typewriter Roles (one per line)</label>
+                    <textarea id="edit-hero-roles" class="admin-textarea"></textarea>
+                </div>
+                <div class="admin-form-group">
+                    <label>Hero Description</label>
+                    <textarea id="edit-hero-desc" class="admin-textarea" style="min-height:100px;"></textarea>
+                </div>
+                <div class="admin-form-group">
+                    <label>GitHub URL</label>
+                    <input type="text" id="edit-hero-github" class="admin-input" />
+                </div>
+                <div class="admin-form-group">
+                    <label>LinkedIn URL</label>
+                    <input type="text" id="edit-hero-linkedin" class="admin-input" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Stats (3 items max)</label>
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                        <div style="display:flex; gap:6px;">
+                            <input type="text" id="edit-stat-num-0" placeholder="Number (e.g. 5)" class="admin-input" style="flex:1;" />
+                            <input type="text" id="edit-stat-suf-0" placeholder="Suffix (e.g. +)" class="admin-input" style="width:70px;" />
+                            <input type="text" id="edit-stat-lab-0" placeholder="Label" class="admin-input" style="flex:2;" />
+                        </div>
+                        <div style="display:flex; gap:6px;">
+                            <input type="text" id="edit-stat-num-1" placeholder="Number" class="admin-input" style="flex:1;" />
+                            <input type="text" id="edit-stat-suf-1" placeholder="Suffix" class="admin-input" style="width:70px;" />
+                            <input type="text" id="edit-stat-lab-1" placeholder="Label" class="admin-input" style="flex:2;" />
+                        </div>
+                        <div style="display:flex; gap:6px;">
+                            <input type="text" id="edit-stat-num-2" placeholder="Number" class="admin-input" style="flex:1;" />
+                            <input type="text" id="edit-stat-suf-2" placeholder="Suffix" class="admin-input" style="width:70px;" />
+                            <input type="text" id="edit-stat-lab-2" placeholder="Label" class="admin-input" style="flex:2;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABOUT PANEL -->
+            <div class="admin-tab-panel" id="tab-about">
+                <div class="admin-form-group">
+                    <label>About Section Title</label>
+                    <input type="text" id="edit-about-title" class="admin-input" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Bio Paragraphs (one per line, HTML tags allowed)</label>
+                    <textarea id="edit-about-paragraphs" class="admin-textarea" style="min-height:160px;"></textarea>
+                </div>
+                <div class="admin-form-group">
+                    <label>Meta Info Cards</label>
+                    <button class="admin-btn admin-btn-secondary" style="margin-bottom:8px; width:100%;" onclick="openMetaCardAddModal()">+ Add Info Card</button>
+                    <div class="admin-list-container" id="admin-about-meta-list">
+                        <!-- Filled by Script -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPERIENCE PANEL -->
+            <div class="admin-tab-panel" id="tab-experience">
+                <button class="admin-btn admin-btn-secondary" style="width:100%;" onclick="openExperienceAddModal()">+ Add New Internship / Job</button>
+                <div class="admin-list-container" id="admin-experience-list" style="max-height: 400px;">
+                    <!-- Filled by Script -->
+                </div>
+            </div>
+
+            <!-- PROJECTS PANEL -->
+            <div class="admin-tab-panel" id="tab-projects">
+                <button class="admin-btn admin-btn-secondary" style="width:100%;" onclick="openProjectAddModal()">+ Add New Project</button>
+                <div class="admin-list-container" id="admin-projects-list" style="max-height: 400px;">
+                    <!-- Filled by Script -->
+                </div>
+            </div>
+
+            <!-- SKILLS PANEL -->
+            <div class="admin-tab-panel" id="tab-skills">
+                <div style="display:flex; flex-direction:column; gap:1rem;" id="admin-skills-group-list">
+                    <!-- Filled by Script -->
+                </div>
+            </div>
+
+            <!-- CERTS PANEL -->
+            <div class="admin-tab-panel" id="tab-certs">
+                <button class="admin-btn admin-btn-secondary" style="width:100%;" onclick="openCertAddModal()">+ Add New Certification</button>
+                <div class="admin-list-container" id="admin-certs-list" style="max-height: 400px;">
+                    <!-- Filled by Script -->
+                </div>
+            </div>
+
+            <!-- RESUME & SECURITY PANEL -->
+            <div class="admin-tab-panel" id="tab-resume-security">
+                <div style="border-bottom:1px solid var(--border); padding-bottom:1.25rem;">
+                    <h4 style="font-family:var(--font-mono); font-size:12px; color:var(--cyan); margin-bottom:10px; text-transform:uppercase;">Resume Management</h4>
+                    
+                    <div class="admin-form-group" style="margin-bottom:12px;">
+                        <label>Resume File Name (displayed during download)</label>
+                        <input type="text" id="edit-resume-name" class="admin-input" placeholder="Rohan_Mangal_Resume.pdf" />
+                    </div>
+                    
+                    <div class="admin-form-group" style="margin-bottom:12px;">
+                        <label>Resume URL (external link e.g. Drive/Dropbox)</label>
+                        <input type="text" id="edit-resume-url" class="admin-input" placeholder="https://drive.google.com/..." />
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label>Or Upload Resume PDF (embedded directly into page)</label>
+                        <div style="display:flex; gap:8px; align-items:center;">
+                            <input type="file" id="edit-resume-file" accept="application/pdf" style="display:none;" onchange="handleResumeUpload(event)" />
+                            <button class="admin-btn admin-btn-secondary" onclick="document.getElementById('edit-resume-file').click()">Select PDF</button>
+                            <span id="resume-upload-status" style="font-size:11px; color:var(--text-muted); font-family:var(--font-mono); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:260px;">No PDF uploaded</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-family:var(--font-mono); font-size:12px; color:var(--cyan); margin-bottom:10px; text-transform:uppercase;">Security Keys</h4>
+                    <div class="admin-form-group" style="margin-bottom:10px;">
+                        <label>New Password</label>
+                        <input type="password" id="edit-password-new" class="admin-input" placeholder="••••••••" />
+                    </div>
+                    <div class="admin-form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="edit-password-confirm" class="admin-input" placeholder="••••••••" />
+                    </div>
+                    <button class="admin-btn admin-btn-secondary" style="margin-top:12px; width:100%;" onclick="updateAdminPassword()">Update Key</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-footer">
+            <div class="admin-footer-buttons">
+                <button class="admin-btn admin-btn-primary" style="flex:1;" onclick="saveAllChanges()">Save Changes</button>
+                <button class="admin-btn admin-btn-secondary" onclick="toggleAdminSidebar()">Minimize</button>
+            </div>
+            <button class="admin-btn admin-btn-secondary" style="font-size:10px; padding:6px; width:100%;" onclick="exportStaticHtml()">Download self-contained index.html</button>
+        </div>
+    </div>
+
+    <!-- PORTFOLIO JSON DATA EMBED -->
+    <script id="portfolio-data" type="application/json">
+{
+  "passwordHash": "0bdc868f63addbca52af9a9112739abc7a2677539e0afc4539f541e654f49bd9",
+  "resume": {
+    "url": "",
+    "name": ""
+  },
+  "hero": {
+    "eyebrow": "AI/ML Engineer — Jodhpur, India",
+    "nameFirst": "Rohan",
+    "nameLast": "Mangal",
+    "roles": [
+      "Computer Vision Engineer",
+      "NLP & Transformer Engineer",
+      "AI Pipeline Builder",
+      "ML Engineer in Progress"
+    ],
+    "description": "Building production-ready AI pipelines at the intersection of Computer Vision and NLP. Currently working on counterfeit detection at Wepitch — OpenCLIP, YOLOv8, Qwen-VLM.",
+    "githubUrl": "https://github.com/mangalrohan05",
+    "linkedInUrl": "https://www.linkedin.com/in/rohanm0805",
+    "stats": [
+      {
+        "num": "5",
+        "suffix": "+",
+        "label": "AI Projects"
+      },
+      {
+        "num": "2",
+        "suffix": "×",
+        "label": "Internships"
+      },
+      {
+        "num": "4",
+        "suffix": "th",
+        "label": "Year B.E. IT"
+      }
+    ]
+  },
+  "about": {
+    "title": "Who I am",
+    "paragraphs": [
+      "I'm a <strong>final-year B.E. IT student</strong> at MBM University, Jodhpur — deliberately transitioning from full-stack web engineering into AI/ML. The engineering discipline I built through MERN, FastAPI and Python now fuels a deep dive into the intelligence layer of software.",
+      "At <strong>Wepitch</strong>, I built a counterfeit product detection system — combining OpenCLIP for visual similarity, YOLOv8 for object detection, EasyOCR for label verification, and asyncio for parallel pipeline throughput (June - August 2025). My scope is growing toward LLMs and RAG-based workflows.",
+      "I approach models from <strong>first principles</strong>, not just API calls — I want to understand why a model works before I deploy it. I'm also actively working on my DSA in Java for top-tier technical interviews."
+    ],
+    "meta": [
+      {
+        "label": "University",
+        "value": "MBM University, Jodhpur"
+      },
+      {
+        "label": "Degree",
+        "value": "B.E. Information Technology · 2023–2027"
+      },
+      {
+        "label": "Current Focus",
+        "value": "Computer Vision · NLP · LLMs · RAG"
+      },
+      {
+        "label": "Location",
+        "value": "Jodhpur, Rajasthan, India"
+      },
+      {
+        "label": "Status",
+        "value": "Open to AI/ML Internships 2025–26",
+        "highlight": true
+      },
+      {
+        "label": "Contact",
+        "value": "rohanmangal.2019@gmail.com",
+        "isEmail": true
+      }
+    ]
+  },
+  "experience": [
+    {
+      "company": "Wepitch",
+      "companyShort": "WP",
+      "role": "AI Engineer Intern",
+      "team": "Global AI Team",
+      "period": "June - August 2025",
+      "tags": [
+        "OpenCLIP",
+        "YOLOv8",
+        "Qwen-VLM",
+        "SuperPoint/LightGlue",
+        "RANSAC",
+        "EasyOCR",
+        "Laplace Variance",
+        "Counterfeit Detection",
+        "Computer Vision",
+        "FastAPI",
+        "asyncio"
+      ]
+    },
+    {
+      "company": "Xebia",
+      "companyShort": "XB",
+      "role": "Full Stack Engineer Intern",
+      "team": "",
+      "period": "2024 · 3 months",
+      "tags": [
+        "MERN Stack",
+        "REST APIs",
+        "Node.js",
+        "MongoDB",
+        "React"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Authentiq",
+      "status": "Confidential",
+      "statusClass": "status-confidential",
+      "desc": "End-to-end counterfeit product detection pipeline — OpenCLIP for visual similarity, YOLOv8 for detection, SuperPoint/LightGlue for feature matching, RANSAC for geometric verification, EasyOCR for label OCR, and Laplace Variance for blur filtering.",
+      "stack": [
+        "OpenCLIP",
+        "YOLOv8",
+        "SuperPoint/LightGlue",
+        "RANSAC",
+        "EasyOCR",
+        "Laplace Variance",
+        "FastAPI",
+        "asyncio",
+        "Python"
+      ],
+      "cat": "ai",
+      "catLabel": "AI · Computer Vision",
+      "linkText": "Private repo",
+      "linkUrl": ""
+    },
+    {
+      "name": "Fake News Detector",
+      "status": "Complete",
+      "statusClass": "status-done",
+      "desc": "Supervised text classifier to detect misleading content. DistilBERT fine-tuned with live web retrieval via gnews for real-time fact context — a lightweight RAG pipeline.",
+      "stack": [
+        "DistilBERT",
+        "Scikit-learn",
+        "HuggingFace",
+        "gnews",
+        "Python"
+      ],
+      "cat": "ai",
+      "catLabel": "AI · NLP",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05/fake-news-detector"
+    },
+    {
+      "name": "ChatLens",
+      "status": "Active",
+      "statusClass": "status-active",
+      "desc": "WhatsApp chat analyser with sentiment analysis, activity heatmaps, word clouds, and per-user NLP insights. React/Vite frontend with a dark intelligence-terminal aesthetic.",
+      "stack": [
+        "Python",
+        "Flask",
+        "React",
+        "Recharts",
+        "NLP"
+      ],
+      "cat": "ai",
+      "catLabel": "AI · NLP",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05"
+    },
+    {
+      "name": "NeuroSign",
+      "status": "Active",
+      "statusClass": "status-active",
+      "desc": "Real-time hand sign recognition via live webcam. CNN trained on gesture datasets, with MediaPipe landmark detection as the preprocessing backbone.",
+      "stack": [
+        "TensorFlow",
+        "MediaPipe",
+        "CNN",
+        "OpenCV",
+        "Python"
+      ],
+      "cat": "ai",
+      "catLabel": "AI · Computer Vision",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05"
+    },
+    {
+      "name": "Energy Prediction",
+      "status": "Complete",
+      "statusClass": "status-done",
+      "desc": "Regression model forecasting corporate energy consumption patterns from operational and environmental features. Scikit-learn pipeline with feature engineering and cross-validation.",
+      "stack": [
+        "Python",
+        "Scikit-learn",
+        "Pandas",
+        "Regression"
+      ],
+      "cat": "ai",
+      "catLabel": "AI · ML",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05"
+    },
+    {
+      "name": "Product Inventory App",
+      "status": "Complete",
+      "statusClass": "status-done",
+      "desc": "Full inventory management platform with CRUD operations, reporting, and user authentication. MERN stack with Sequelize ORM.",
+      "stack": [
+        "MongoDB",
+        "Express",
+        "React",
+        "Node.js",
+        "Sequelize"
+      ],
+      "cat": "web",
+      "catLabel": "Web · Full Stack",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05"
+    },
+    {
+      "name": "Feedback Collection System",
+      "status": "Complete",
+      "statusClass": "status-done",
+      "desc": "Structured form submission and analytics dashboard. Real-time response aggregation with Tailwind CSS UI.",
+      "stack": [
+        "Node.js",
+        "MongoDB",
+        "Tailwind CSS",
+        "Express"
+      ],
+      "cat": "web",
+      "catLabel": "Web · Full Stack",
+      "linkText": "GitHub ↗",
+      "linkUrl": "https://github.com/mangalrohan05"
+    }
+  ],
+  "skills": [
+    {
+      "category": "AI / ML Core",
+      "items": [
+        "Python",
+        "TensorFlow",
+        "PyTorch",
+        "Scikit-learn",
+        "NumPy",
+        "Pandas",
+        "Streamlit"
+      ]
+    },
+    {
+      "category": "Computer Vision",
+      "items": [
+        "OpenCLIP",
+        "YOLOv8",
+        "OpenCV",
+        "MediaPipe",
+        "EasyOCR",
+        "SuperPoint/LightGlue",
+        "RANSAC",
+        "Laplace Variance",
+        "CNN"
+      ]
+    },
+    {
+      "category": "NLP & LLMs",
+      "items": [
+        "DistilBERT",
+        "HuggingFace",
+        "Transformers",
+        "Qwen-VLM",
+        "RAG",
+        "Fine-tuning"
+      ]
+    },
+    {
+      "category": "Backend & APIs",
+      "items": [
+        "FastAPI",
+        "Flask",
+        "Node.js",
+        "Express.js",
+        "REST APIs",
+        "asyncio"
+      ]
+    },
+    {
+      "category": "Frontend",
+      "items": [
+        "React",
+        "JavaScript",
+        "Tailwind CSS",
+        "HTML/CSS",
+        "Recharts",
+        "Vite"
+      ]
+    },
+    {
+      "category": "Databases & Tools",
+      "items": [
+        "MongoDB",
+        "MySQL",
+        "Git",
+        "Docker",
+        "Jupyter",
+        "Linux"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Oracle Cloud Infrastructure — AI/ML",
+      "issuer": "Oracle",
+      "status": "Verified"
+    },
+    {
+      "name": "Machine Learning A–Z",
+      "issuer": "Udemy",
+      "status": "Verified"
+    },
+    {
+      "name": "Python Masterclass",
+      "issuer": "Udemy",
+      "status": "Verified"
+    },
+    {
+      "name": "Full Stack Software Engineering",
+      "issuer": "Xebia · Internship Certificate",
+      "status": "Issued"
+    },
+    {
+      "name": "Web Development & Version Control Foundation",
+      "issuer": "Let's Upgrade",
+      "status": "Verified"
+    },
+    {
+      "name": "EduRishi E²MP Workshop",
+      "issuer": "MBM University × EduRishi Eduventures",
+      "status": "Issued"
+    }
+  ],
+  "contact": {
+    "title": "Let's connect",
+    "description": "Final-year B.E. IT student targeting AI/ML engineering roles and research opportunities. If you're building something intelligent — let's talk.",
+    "links": [
+      {
+        "label": "LinkedIn",
+        "sub": "linkedin.com/in/rohanm0805",
+        "url": "https://www.linkedin.com/in/rohanm0805",
+        "icon": "in"
+      },
+      {
+        "label": "GitHub",
+        "sub": "github.com/mangalrohan05",
+        "url": "https://github.com/mangalrohan05",
+        "icon": "GH"
+      },
+      {
+        "label": "Leetcode",
+        "sub": "leetcode.com/u/rohan_85",
+        "url": "https://leetcode.com/u/rohan_85/",
+        "icon": "LC"
+      },
+      {
+        "label": "Email",
+        "sub": "rohanmangal.2019@gmail.com",
+        "url": "mailto:rohanmangal.2019@gmail.com",
+        "icon": "@"
+      }
+    ]
+  },
+  "footer": {
+    "text": "Rohan Mangal · MBM University, Jodhpur",
+    "year": "2025"
+  }
+}
+    </script>
+
+    <!-- CORE LOGIC / DYNAMIC RENDERER -->
+    <script>
+        let portfolioData = {};
+        let editingIndex = -1;
+        let editingType = '';
+
+        // Load data on start
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadPortfolioData();
+            
+            // Setup lock button listener
+            document.getElementById('admin-login-btn').addEventListener('click', () => {
+                if (sessionStorage.getItem('isAdmin') === 'true') {
+                    toggleAdminSidebar();
+                } else {
+                    document.getElementById('admin-login-modal').classList.add('open');
+                    document.getElementById('admin-password-input').value = '';
+                    document.getElementById('admin-password-input').focus();
+                }
+            });
+
+            document.getElementById('close-login-btn').addEventListener('click', () => {
+                document.getElementById('admin-login-modal').classList.remove('open');
+            });
+
+            document.getElementById('submit-login-btn').addEventListener('click', authenticateAdmin);
+            document.getElementById('admin-password-input').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') authenticateAdmin();
+            });
+
+            // Keyboard shortcut Ctrl+Shift+E to toggle login
+            window.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'e') {
+                    e.preventDefault();
+                    if (sessionStorage.getItem('isAdmin') === 'true') {
+                        toggleAdminSidebar();
+                    } else {
+                        document.getElementById('admin-login-btn').click();
+                    }
+                }
+            });
+
+            // Auto enter admin mode if already authenticated in session
+            if (sessionStorage.getItem('isAdmin') === 'true') {
+                enterAdminMode();
+            }
+        });
+
+        // Fetch portfolio JSON from local server, static JSON file, or fallback to script block
+        async function loadPortfolioData() {
+            try {
+                // Try reading from dynamic path (e.g. if served from our express backend or static repo)
+                const res = await fetch('data.json');
+                if (res.ok) {
+                    portfolioData = await res.json();
+                } else {
+                    throw new Error('data.json HTTP error status ' + res.status);
+                }
+            } catch (err) {
+                console.log('Failed fetching data.json from server. Using embedded JSON fallback.', err);
+                const scriptNode = document.getElementById('portfolio-data');
+                portfolioData = JSON.parse(scriptNode.textContent);
+            }
+            renderPortfolio(portfolioData);
+        }
+
+        // Render contents into DOM
+        function renderPortfolio(data) {
+            // 1. Hero
+            document.getElementById('hero-eyebrow').textContent = data.hero.eyebrow;
+            document.getElementById('hero-name').innerHTML = `${data.hero.nameFirst}<br /><span>${data.hero.nameLast}</span>`;
+            document.getElementById('hero-desc').textContent = data.hero.description;
+
+            // CTAs
+            let ctasHtml = `<a href="#projects" class="btn-primary">View Projects ↓</a>`;
+            if (data.resume && (data.resume.url || data.resume.base64)) {
+                const resumeUrl = data.resume.url || data.resume.base64;
+                ctasHtml += `<a href="${resumeUrl}" target="_blank" download="${data.resume.name || 'Resume.pdf'}" class="btn-ghost" id="hero-resume-btn">Resume 📄</a>`;
+            }
+            ctasHtml += `<a href="${data.hero.githubUrl}" target="_blank" rel="noopener" class="btn-ghost">GitHub ↗</a>`;
+            ctasHtml += `<a href="${data.hero.linkedInUrl}" target="_blank" rel="noopener" class="btn-ghost">LinkedIn ↗</a>`;
+            document.getElementById('hero-ctas').innerHTML = ctasHtml;
+
+            // Stats
+            let statsHtml = '';
+            data.hero.stats.forEach(stat => {
+                if (stat.num && stat.label) {
+                    statsHtml += `
+                        <div class="stat-item">
+                            <div class="stat-num">${stat.num}<span>${stat.suffix}</span></div>
+                            <div class="stat-label">${stat.label}</div>
+                        </div>
+                    `;
+                }
+            });
+            document.getElementById('hero-stats').innerHTML = statsHtml;
+
+            // 2. About
+            let paragraphsHtml = '';
+            data.about.paragraphs.forEach(p => {
+                if (p) paragraphsHtml += `<p>${p}</p>`;
+            });
+            document.getElementById('about-paragraphs').innerHTML = paragraphsHtml;
+
+            let metaHtml = '';
+            data.about.meta.forEach(item => {
+                if (item.label && item.value) {
+                    let valHtml = item.value;
+                    if (item.isEmail) {
+                        valHtml = `<a href="mailto:${item.value}">${item.value}</a>`;
+                    }
+                    const highlightStyle = item.highlight ? 'style="color:var(--cyan)"' : '';
+                    metaHtml += `
+                        <div class="meta-card">
+                            <div class="meta-card-label">${item.label}</div>
+                            <div class="meta-card-value" ${highlightStyle}>${valHtml}</div>
+                        </div>
+                    `;
+                }
+            });
+            document.getElementById('about-meta').innerHTML = metaHtml;
+
+            // 3. Experience
+            let expHtml = '';
+            data.experience.forEach(exp => {
+                let tagsHtml = '';
+                exp.tags.forEach(t => {
+                    const isCyan = ["OpenCLIP", "YOLOv8", "Qwen-VLM", "SuperPoint/LightGlue", "RANSAC", "DistilBERT", "PyTorch", "TensorFlow"].includes(t) ? 'cyan' : '';
+                    tagsHtml += `<span class="tag ${isCyan}">${t}</span>`;
+                });
+                expHtml += `
+                    <div class="exp-card">
+                        <div class="exp-icon">${exp.companyShort || 'EXP'}</div>
+                        <div class="exp-body">
+                            <div class="exp-role">${exp.role}</div>
+                            <div class="exp-company">${exp.company}${exp.team ? ' · ' + exp.team : ''}</div>
+                            <div class="exp-tags">${tagsHtml}</div>
+                        </div>
+                        <div class="exp-period">${exp.period}</div>
+                    </div>
+                `;
+            });
+            document.getElementById('experience-list').innerHTML = expHtml;
+
+            // 4. Projects
+            let projectsHtml = '';
+            data.projects.forEach(proj => {
+                let tagsHtml = '';
+                proj.stack.forEach(t => {
+                    const isCyan = ["OpenCLIP", "YOLOv8", "SuperPoint/LightGlue", "DistilBERT", "PyTorch", "TensorFlow"].includes(t) ? 'cyan' : '';
+                    tagsHtml += `<span class="tag ${isCyan}">${t}</span>`;
+                });
+
+                let linkHtml = '';
+                if (proj.linkUrl) {
+                    linkHtml = `<a href="${proj.linkUrl}" target="_blank" rel="noopener" class="project-link">${proj.linkText}</a>`;
+                } else {
+                    linkHtml = `<span class="project-link" style="color:var(--red)">${proj.linkText}</span>`;
+                }
+
+                projectsHtml += `
+                    <div class="project-card" data-cat="${proj.cat}">
+                        <div class="project-header">
+                            <div class="project-name">${proj.name}</div>
+                            <span class="project-status ${proj.statusClass}">${proj.status}</span>
+                        </div>
+                        <div class="project-desc">${proj.desc}</div>
+                        <div class="project-stack">${tagsHtml}</div>
+                        <div class="project-link-row">
+                            <span class="project-cat-badge">${proj.catLabel}</span>
+                            ${linkHtml}
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('projects-grid').innerHTML = projectsHtml;
+
+            // 5. Skills
+            let skillsHtml = '';
+            data.skills.forEach(group => {
+                let pillsHtml = '';
+                group.items.forEach(item => {
+                    pillsHtml += `<span class="skill-pill">${item}</span>`;
+                });
+                skillsHtml += `
+                    <div class="skill-group">
+                        <div class="skill-group-title">${group.category}</div>
+                        <div class="skill-pills">${pillsHtml}</div>
+                    </div>
+                `;
+            });
+            document.getElementById('skills-grid').innerHTML = skillsHtml;
+
+            // 6. Certifications
+            let certsHtml = '';
+            data.certifications.forEach(cert => {
+                certsHtml += `
+                    <div class="cert-item">
+                        <div>
+                            <div class="cert-name">${cert.name}</div>
+                            <div class="cert-issuer">${cert.issuer}</div>
+                        </div>
+                        <span class="cert-badge">${cert.status}</span>
+                    </div>
+                `;
+            });
+            document.getElementById('certs-list').innerHTML = certsHtml;
+
+            // 7. Contact
+            document.getElementById('contact-description').textContent = data.contact.description;
+            let contactLinksHtml = '';
+            data.contact.links.forEach(link => {
+                contactLinksHtml += `
+                    <a href="${link.url}" target="_blank" rel="noopener" class="contact-link">
+                        <div class="contact-link-icon" style="font-family:${link.icon.length > 2 ? 'var(--font-body)' : 'var(--font-mono)'}; font-size:${link.icon.length > 2 ? '15px' : '13px'}">${link.icon}</div>
+                        <div>
+                            <div class="contact-link-label">${link.label}</div>
+                            <div class="contact-link-sub">${link.sub}</div>
+                        </div>
+                    </a>
+                `;
+            });
+            document.getElementById('contact-links').innerHTML = contactLinksHtml;
+
+            // 8. Footer
+            document.getElementById('footer-container').innerHTML = `
+                <p>${data.footer.text}</p>
+                <p>Built from scratch · <span>${data.footer.year}</span></p>
+            `;
+
+            // Reset scripts
+            setupTypewriter(data.hero.roles);
+            setupScrollReveal();
+            setupFilters();
+        }
+
+        // Typewriter Effect
+        let typewriterTimeout = null;
+        function setupTypewriter(rolesList) {
+            if (typewriterTimeout) {
+                clearTimeout(typewriterTimeout);
+            }
+            const roles = rolesList && rolesList.length ? rolesList : ['AI Engineer'];
+            let ri = 0, ci = 0, deleting = false;
+            const el = document.getElementById('role-text');
+            if (!el) return;
+
+            el.textContent = '';
+
+            function tick() {
+                const word = roles[ri];
+                if (!word) return;
+                if (!deleting) {
+                    el.textContent = word.slice(0, ++ci);
+                    if (ci === word.length) {
+                        deleting = true;
+                        typewriterTimeout = setTimeout(tick, 2000);
+                        return;
+                    }
+                } else {
+                    el.textContent = word.slice(0, --ci);
+                    if (ci === 0) {
+                        deleting = false;
+                        ri = (ri + 1) % roles.length;
+                    }
+                }
+                typewriterTimeout = setTimeout(tick, deleting ? 38 : 72);
+            }
+            tick();
+        }
+
+        // Scroll Reveal
+        let revealObserver = null;
+        function setupScrollReveal() {
+            const els = document.querySelectorAll('.reveal');
+            if (revealObserver) {
+                revealObserver.disconnect();
+            }
+            revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        revealObserver.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            els.forEach(el => revealObserver.observe(el));
+        }
+
+        // Projects filtering
+        function setupFilters() {
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(btn => {
+                const newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
+
+                newBtn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    newBtn.classList.add('active');
+                    const f = newBtn.dataset.filter;
+                    document.querySelectorAll('.project-card').forEach(c => {
+                        c.classList.toggle('hidden', f !== 'all' && c.dataset.cat !== f);
+                    });
+                });
+            });
+        }
+
+        // Particles canvas (neural network background)
+        (function () {
+            const canvas = document.getElementById('neural');
+            const ctx = canvas.getContext('2d');
+            let nodes = [], W, H;
+            const N = 38, RANGE = 160, CYAN = '0,200,255';
+
+            function resize() {
+                W = canvas.width = window.innerWidth;
+                H = canvas.height = window.innerHeight;
+            }
+
+            function init() {
+                nodes = Array.from({ length: N }, () => ({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    vx: (Math.random() - 0.5) * 0.28,
+                    vy: (Math.random() - 0.5) * 0.28,
+                    r: Math.random() * 1.8 + 0.6
+                }));
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+                for (let i = 0; i < N; i++) {
+                    const a = nodes[i];
+                    a.x += a.vx; a.y += a.vy;
+                    if (a.x < 0 || a.x > W) a.vx *= -1;
+                    if (a.y < 0 || a.y > H) a.vy *= -1;
+                    for (let j = i + 1; j < N; j++) {
+                        const b = nodes[j];
+                        const dx = a.x - b.x, dy = a.y - b.y;
+                        const d = Math.sqrt(dx * dx + dy * dy);
+                        if (d < RANGE) {
+                            const alpha = (1 - d / RANGE) * 0.18;
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(${CYAN},${alpha})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.moveTo(a.x, a.y);
+                            ctx.lineTo(b.x, b.y);
+                            ctx.stroke();
+                        }
+                    }
+                    ctx.beginPath();
+                    ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${CYAN},0.5)`;
+                    ctx.fill();
+                }
+                requestAnimationFrame(draw);
+            }
+
+            resize();
+            init();
+            draw();
+            window.addEventListener('resize', () => { resize(); });
+        })();
+    </script>
+
+    <!-- ADMIN EDIT WORKFLOW CONTROLLER -->
+    <script>
+        // SHA-256 Utility
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+
+        // Authenticate admin password
+        async function authenticateAdmin() {
+            const pwInput = document.getElementById('admin-password-input');
+            const pw = pwInput.value;
+            const hash = await sha256(pw);
+            
+            if (hash === portfolioData.passwordHash) {
+                sessionStorage.setItem('isAdmin', 'true');
+                document.getElementById('admin-login-modal').classList.remove('open');
+                enterAdminMode();
+            } else {
+                alert('Invalid password! Authentication failed.');
+            }
+        }
+
+        // Activate Admin Session Visuals
+        function enterAdminMode() {
+            document.body.classList.add('admin-active');
+            document.getElementById('login-btn-text').textContent = 'Control Panel';
+            
+            // Setup forms
+            loadAdminFormValues();
+        }
+
+        // Log out admin
+        function logoutAdmin() {
+            sessionStorage.removeItem('isAdmin');
+            document.body.classList.remove('admin-active');
+            document.getElementById('admin-sidebar').classList.remove('open');
+            document.getElementById('login-btn-text').textContent = 'Login';
+            alert('Logged out from admin panel.');
+        }
+
+        // Toggle editor sidebar panel
+        function toggleAdminSidebar() {
+            const sidebar = document.getElementById('admin-sidebar');
+            sidebar.classList.toggle('open');
+            if (sidebar.classList.contains('open')) {
+                loadAdminFormValues();
+            }
+        }
+
+        // Switch panel tabs
+        function switchTab(evt, tabId) {
+            const panels = document.querySelectorAll('.admin-tab-panel');
+            panels.forEach(p => p.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.admin-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Pull active portfolioData values into input elements
+        function loadAdminFormValues() {
+            if (!portfolioData || !portfolioData.hero) return;
+
+            // Hero
+            document.getElementById('edit-hero-eyebrow').value = portfolioData.hero.eyebrow;
+            document.getElementById('edit-hero-nameFirst').value = portfolioData.hero.nameFirst;
+            document.getElementById('edit-hero-nameLast').value = portfolioData.hero.nameLast;
+            document.getElementById('edit-hero-roles').value = portfolioData.hero.roles.join('\n');
+            document.getElementById('edit-hero-desc').value = portfolioData.hero.description;
+            document.getElementById('edit-hero-github').value = portfolioData.hero.githubUrl;
+            document.getElementById('edit-hero-linkedin').value = portfolioData.hero.linkedInUrl;
+
+            // Stats
+            for (let i = 0; i < 3; i++) {
+                const stat = portfolioData.hero.stats[i] || { num: '', suffix: '', label: '' };
+                document.getElementById(`edit-stat-num-${i}`).value = stat.num;
+                document.getElementById(`edit-stat-suf-${i}`).value = stat.suffix;
+                document.getElementById(`edit-stat-lab-${i}`).value = stat.label;
+            }
+
+            // About
+            document.getElementById('edit-about-title').value = portfolioData.about.title;
+            document.getElementById('edit-about-paragraphs').value = portfolioData.about.paragraphs.join('\n');
+            renderAboutMetaList();
+
+            // Experience
+            renderExperienceList();
+
+            // Projects
+            renderProjectsList();
+
+            // Skills
+            renderSkillsGroups();
+
+            // Certs
+            renderCertsList();
+
+            // Resume
+            document.getElementById('edit-resume-name').value = portfolioData.resume.name || '';
+            document.getElementById('edit-resume-url').value = portfolioData.resume.url || '';
+            if (portfolioData.resume.base64) {
+                document.getElementById('resume-upload-status').textContent = portfolioData.resume.name || 'Base64 Resume Loaded';
+            } else {
+                document.getElementById('resume-upload-status').textContent = 'No PDF uploaded';
+            }
+        }
+
+        // Collect form values back to active portfolioData object (in-memory)
+        function syncFormToData() {
+            // Hero
+            portfolioData.hero.eyebrow = document.getElementById('edit-hero-eyebrow').value;
+            portfolioData.hero.nameFirst = document.getElementById('edit-hero-nameFirst').value;
+            portfolioData.hero.nameLast = document.getElementById('edit-hero-nameLast').value;
+            portfolioData.hero.roles = document.getElementById('edit-hero-roles').value.split('\n').filter(r => r.trim());
+            portfolioData.hero.description = document.getElementById('edit-hero-desc').value;
+            portfolioData.hero.githubUrl = document.getElementById('edit-hero-github').value;
+            portfolioData.hero.linkedInUrl = document.getElementById('edit-hero-linkedin').value;
+
+            // Stats
+            portfolioData.hero.stats = [];
+            for (let i = 0; i < 3; i++) {
+                const num = document.getElementById(`edit-stat-num-${i}`).value;
+                const suffix = document.getElementById(`edit-stat-suf-${i}`).value;
+                const label = document.getElementById(`edit-stat-lab-${i}`).value;
+                if (num && label) {
+                    portfolioData.hero.stats.push({ num, suffix, label });
+                }
+            }
+
+            // About
+            portfolioData.about.title = document.getElementById('edit-about-title').value;
+            portfolioData.about.paragraphs = document.getElementById('edit-about-paragraphs').value.split('\n').filter(p => p.trim());
+
+            // Resume
+            portfolioData.resume.name = document.getElementById('edit-resume-name').value;
+            portfolioData.resume.url = document.getElementById('edit-resume-url').value;
+            // base64 is already preserved in portfolioData when loaded
+        }
+
+        // Save All Changes (API / File Download)
+        async function saveAllChanges() {
+            syncFormToData();
+
+            let savedOnServer = false;
+            try {
+                // Try writing back to Express backend server
+                const res = await fetch('/api/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(portfolioData)
+                });
+                
+                if (res.ok) {
+                    const result = await res.json();
+                    if (result.success) {
+                        alert('Changes saved successfully to local data.json file!');
+                        savedOnServer = true;
+                    }
+                }
+            } catch (err) {
+                console.log('Express API backend offline. Falling back to local file export download.');
+            }
+
+            if (savedOnServer) {
+                renderPortfolio(portfolioData);
+                toggleAdminSidebar();
+            } else {
+                // Backend down or running statically
+                const choice = confirm('Express local server is offline. Would you like to export your configurations by downloading the updated files? Click OK to download data.json, or Cancel to skip.');
+                if (choice) {
+                    exportDataJson();
+                }
+            }
+        }
+
+        // Export data.json directly
+        function exportDataJson() {
+            syncFormToData();
+            const blob = new Blob([JSON.stringify(portfolioData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'data.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Export self-contained single file index.html with JSON block updated
+        async function exportStaticHtml() {
+            syncFormToData();
+
+            let cleanHtml = '';
+            try {
+                const res = await fetch(window.location.href);
+                cleanHtml = await res.text();
+            } catch (err) {
+                cleanHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            }
+
+            // Replace script tags contents
+            const jsonRegex = /(<script id="portfolio-data" type="application\/json">)[\s\S]*?(<\/script>)/;
+            const updatedJsonStr = '\n' + JSON.stringify(portfolioData, null, 2) + '\n';
+            
+            let finalHtml = cleanHtml.replace(jsonRegex, `$1${updatedJsonStr}$2`);
+            
+            // Clean up admin visual statuses from body before downloading
+            finalHtml = finalHtml.replace(/<body class="[^"]*admin-active[^"]*"/, '<body');
+
+            const blob = new Blob([finalHtml], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Resume PDF upload handler
+        async function handleResumeUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (file.type !== 'application/pdf') {
+                alert('Only PDF files are allowed!');
+                return;
+            }
+
+            // Check size limits
+            if (file.size > 5 * 1024 * 1024) {
+                alert('Resume file size exceeds 5MB! Please upload a smaller PDF.');
+                return;
+            }
+
+            document.getElementById('resume-upload-status').textContent = 'Loading...';
+
+            let uploadedToServer = false;
+            try {
+                // Try Express Upload API
+                const formData = new FormData();
+                formData.append('resume', file);
+
+                const res = await fetch('/api/upload-resume', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (res.ok) {
+                    const result = await res.json();
+                    if (result.success) {
+                        portfolioData.resume.url = result.url;
+                        portfolioData.resume.name = result.name;
+                        portfolioData.resume.base64 = ""; // Clear base64 if server saves it
+                        document.getElementById('edit-resume-url').value = result.url;
+                        document.getElementById('edit-resume-name').value = result.name;
+                        document.getElementById('resume-upload-status').textContent = result.name;
+                        alert('Resume PDF uploaded to local server successfully!');
+                        uploadedToServer = true;
+                    }
+                }
+            } catch (err) {
+                console.log('Local server upload failed. Baking file into index.html as Base64 instead.');
+            }
+
+            if (!uploadedToServer) {
+                // Fallback: Read file as Base64 and embed
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    portfolioData.resume.base64 = e.target.result;
+                    portfolioData.resume.name = file.name;
+                    portfolioData.resume.url = ""; // Clear external URL
+                    document.getElementById('edit-resume-url').value = "";
+                    document.getElementById('edit-resume-name').value = file.name;
+                    document.getElementById('resume-upload-status').textContent = file.name + ' (Embedded)';
+                    alert('Resume converted to Base64 and embedded into settings! Remember to save changes.');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Update security key password
+        async function updateAdminPassword() {
+            const newPw = document.getElementById('edit-password-new').value;
+            const confPw = document.getElementById('edit-password-confirm').value;
+
+            if (!newPw) {
+                alert('Password cannot be empty!');
+                return;
+            }
+
+            if (newPw !== confPw) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            const hash = await sha256(newPw);
+            portfolioData.passwordHash = hash;
+            
+            document.getElementById('edit-password-new').value = '';
+            document.getElementById('edit-password-confirm').value = '';
+            alert('Password key updated in settings! Be sure to click "Save Changes" at the bottom to store it.');
+        }
+
+        // Close Item Modal Helper
+        function closeEditItemModal() {
+            document.getElementById('admin-edit-item-modal').classList.remove('open');
+            editingIndex = -1;
+            editingType = '';
+        }
+
+        /* ── ABOUT META ACTIONS ── */
+        function renderAboutMetaList() {
+            const list = document.getElementById('admin-about-meta-list');
+            list.innerHTML = '';
+            portfolioData.about.meta.forEach((meta, idx) => {
+                list.innerHTML += `
+                    <div class="editor-list-item">
+                        <div>
+                            <div class="editor-list-item-title">${meta.label}</div>
+                            <div class="editor-list-item-sub">${meta.value}</div>
+                        </div>
+                        <div class="editor-actions">
+                            <button class="editor-mini-btn" onclick="openMetaCardEditModal(${idx})">✎</button>
+                            <button class="editor-mini-btn danger" onclick="deleteMetaCard(${idx})">🗑</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openMetaCardAddModal() {
+            editingType = 'meta';
+            editingIndex = -1;
+            document.getElementById('edit-item-modal-title').textContent = 'Add Info Card';
+            document.getElementById('edit-item-modal-body').innerHTML = `
+                <div class="admin-form-group">
+                    <label>Label</label>
+                    <input type="text" id="modal-meta-label" class="admin-input" placeholder="e.g. University" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Value</label>
+                    <input type="text" id="modal-meta-value" class="admin-input" placeholder="e.g. MBM University" />
+                </div>
+                <div style="display:flex; gap:15px; margin-top:10px;">
+                    <label style="display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; cursor:pointer;">
+                        <input type="checkbox" id="modal-meta-highlight" /> Highlight Cyan
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; cursor:pointer;">
+                        <input type="checkbox" id="modal-meta-email" /> Is Email Link
+                    </label>
+                </div>
+            `;
+            document.getElementById('admin-edit-item-modal').classList.add('open');
+        }
+
+        function openMetaCardEditModal(idx) {
+            editingType = 'meta';
+            editingIndex = idx;
+            const meta = portfolioData.about.meta[idx];
+            document.getElementById('edit-item-modal-title').textContent = 'Edit Info Card';
+            document.getElementById('edit-item-modal-body').innerHTML = `
+                <div class="admin-form-group">
+                    <label>Label</label>
+                    <input type="text" id="modal-meta-label" class="admin-input" value="${meta.label}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Value</label>
+                    <input type="text" id="modal-meta-value" class="admin-input" value="${meta.value}" />
+                </div>
+                <div style="display:flex; gap:15px; margin-top:10px;">
+                    <label style="display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; cursor:pointer;">
+                        <input type="checkbox" id="modal-meta-highlight" ${meta.highlight ? 'checked' : ''} /> Highlight Cyan
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; cursor:pointer;">
+                        <input type="checkbox" id="modal-meta-email" ${meta.isEmail ? 'checked' : ''} /> Is Email Link
+                    </label>
+                </div>
+            `;
+            document.getElementById('admin-edit-item-modal').classList.add('open');
+        }
+
+        function deleteMetaCard(idx) {
+            if (confirm('Delete this card?')) {
+                portfolioData.about.meta.splice(idx, 1);
+                renderAboutMetaList();
+            }
+        }
+
+
+        /* ── EXPERIENCE ACTIONS ── */
+        function renderExperienceList() {
+            const list = document.getElementById('admin-experience-list');
+            list.innerHTML = '';
+            portfolioData.experience.forEach((exp, idx) => {
+                list.innerHTML += `
+                    <div class="editor-list-item">
+                        <div>
+                            <div class="editor-list-item-title">${exp.role}</div>
+                            <div class="editor-list-item-sub">${exp.company} (${exp.period})</div>
+                        </div>
+                        <div class="editor-actions">
+                            <button class="editor-mini-btn" onclick="openExperienceEditModal(${idx})">✎</button>
+                            <button class="editor-mini-btn danger" onclick="deleteExperience(${idx})">🗑</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openExperienceAddModal() {
+            editingType = 'experience';
+            editingIndex = -1;
+            document.getElementById('edit-item-modal-title').textContent = 'Add Experience';
+            document.getElementById('edit-item-modal-body').innerHTML = `
+                <div class="admin-form-group">
+                    <label>Company Name</label>
+                    <input type="text" id="modal-exp-company" class="admin-input" placeholder="Wepitch" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Company Short Code (2-3 chars)</label>
+                    <input type="text" id="modal-exp-companyShort" class="admin-input" placeholder="WP" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Role</label>
+                    <input type="text" id="modal-exp-role" class="admin-input" placeholder="AI Engineer Intern" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Team/Department (Optional)</label>
+                    <input type="text" id="modal-exp-team" class="admin-input" placeholder="Global AI Team" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Job Period</label>
+                    <input type="text" id="modal-exp-period" class="admin-input" placeholder="June - August 2025" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Technologies / Tags (comma separated)</label>
+                    <input type="text" id="modal-exp-tags" class="admin-input" placeholder="YOLOv8, OpenCLIP, OpenCV" />
+                </div>
+            `;
+            document.getElementById('admin-edit-item-modal').classList.add('open');
+        }
+
+        function openExperienceEditModal(idx) {
+            editingType = 'experience';
+            editingIndex = idx;
+            const exp = portfolioData.experience[idx];
+            document.getElementById('edit-item-modal-title').textContent = 'Edit Experience';
+            document.getElementById('edit-item-modal-body').innerHTML = `
+                <div class="admin-form-group">
+                    <label>Company Name</label>
+                    <input type="text" id="modal-exp-company" class="admin-input" value="${exp.company}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Company Short Code</label>
+                    <input type="text" id="modal-exp-companyShort" class="admin-input" value="${exp.companyShort || ''}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Role</label>
+                    <input type="text" id="modal-exp-role" class="admin-input" value="${exp.role}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Team/Department</label>
+                    <input type="text" id="modal-exp-team" class="admin-input" value="${exp.team || ''}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Job Period</label>
+                    <input type="text" id="modal-exp-period" class="admin-input" value="${exp.period}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Technologies / Tags (comma separated)</label>
+                    <input type="text" id="modal-exp-tags" class="admin-input" value="${exp.tags.join(', ')}" />
+                </div>
+            `;
+            document.getElementById('admin-edit-item-modal').classList.add('open');
+        }
+
+        function deleteExperience(idx) {
+            if (confirm('Delete this work experience?')) {
+                portfolioData.experience.splice(idx, 1);
+                renderExperienceList();
+            }
+        }
+
+
+        /* ── PROJECTS ACTIONS ── */
+        function renderProjectsList() {
+            const list = document.getElementById('admin-projects-list');
+            list.innerHTML = '';
+            portfolioData.projects.forEach((proj, idx) => {
+                list.innerHTML += `
+                    <div class="editor-list-item">
+                        <div>
+                            <div class="editor-list-item-title">${proj.name}</div>
+                            <div class="editor-list-item-sub">${proj.catLabel}</div>
+                        </div>
+                        <div class="editor-actions">
+                            <button class="editor-mini-btn" onclick="openProjectEditModal(${idx})">✎</button>
+                            <button class="editor-mini-btn danger" onclick="deleteProject(${idx})">🗑</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openProjectAddModal() {
+            editingType = 'projects';
+            editingIndex = -1;
+            document.getElementById('edit-item-modal-title').textContent = 'Add Project';
+            document.getElementById('edit-item-modal-body').innerHTML = `
+                <div class="admin-form-group">
+                    <label>Project Name</label>
+                    <input type="text" id="modal-proj-name" class="admin-input" placeholder="NeuroSign" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Status</label>
+                    <input type="text" id="modal-proj-status" class="admin-input" placeholder="Complete / Active / Confidential" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Status Style (CSS Class)</label>
+                    <select id="modal-proj-statusClass" class="admin-select">
+                        <option value="status-done">Complete (Green)</option>
+                        <option value="status-active">Active (Blue/Cyan)</option>
+                        <option value="status-confidential">Confidential (Red)</option>
+                    </select>
+                </div>
+                <div class="admin-form-group">
+                    <label>Project Description</label>
+                    <textarea id="modal-proj-desc" class="admin-textarea" placeholder="Real-time hand sign recognition..."></textarea>
+                </div>
+                <div class="admin-form-group">
+                    <label>Tech Stack Tags (comma separated)</label>
+                    <input type="text" id="modal-proj-stack" class="admin-input" placeholder="TensorFlow, OpenCV, MediaPipe" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Category (filter flag)</label>
+                    <select id="modal-proj-cat" class="admin-select">
+                        <option value="ai">AI / ML</option>
+                        <option value="web">Web</option>
+                    </select>
+                </div>
+                <div class="admin-form-group">
+                    <label>Category Label Display</label>
+                    <input type="text" id="modal-proj-catLabel" class="admin-input" placeholder="AI · Computer Vision" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Link Text Display</label>
+                    <input type="text" id="modal-proj-linkText" class="admin-input" placeholder="GitHub ↗" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Link URL</label>
+                    <input type="text" id="modal-proj-linkUrl" class="admin-input" placeholder="https://github.com/..." />
+                </div>
+            `;
+            document.getElementById('admin-edit-item-modal').classList.add('open');
+        }
+
+        function openProjectEditModal(idx) {
+            editingType = 'projects';
+            editingIndex = idx;
+            const proj = portfolioData.projects[idx];
+            document.getElementById('edit-item-modal-title').textContent = 'Edit Project';
+            document.getElementById('edit-item-modal-body').innerHTML = `
+                <div class="admin-form-group">
+                    <label>Project Name</label>
+                    <input type="text" id="modal-proj-name" class="admin-input" value="${proj.name}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Status</label>
+                    <input type="text" id="modal-proj-status" class="admin-input" value="${proj.status}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Status Style (CSS Class)</label>
+                    <select id="modal-proj-statusClass" class="admin-select">
+                        <option value="status-done" ${proj.statusClass === 'status-done' ? 'selected' : ''}>Complete (Green)</option>
+                        <option value="status-active" ${proj.statusClass === 'status-active' ? 'selected' : ''}>Active (Blue/Cyan)</option>
+                        <option value="status-confidential" ${proj.statusClass === 'status-confidential' ? 'selected' : ''}>Confidential (Red)</option>
+                    </select>
+                </div>
+                <div class="admin-form-group">
+                    <label>Project Description</label>
+                    <textarea id="modal-proj-desc" class="admin-textarea">${proj.desc}</textarea>
+                </div>
+                <div class="admin-form-group">
+                    <label>Tech Stack Tags (comma separated)</label>
+                    <input type="text" id="modal-proj-stack" class="admin-input" value="${proj.stack.join(', ')}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Category (filter flag)</label>
+                    <select id="modal-proj-cat" class="admin-select">
+                        <option value="ai" ${proj.cat === 'ai' ? 'selected' : ''}>AI / ML</option>
+                        <option value="web" ${proj.cat === 'web' ? 'selected' : ''}>Web</option>
+                    </select>
+                </div>
+                <div class="admin-form-group">
+                    <label>Category Label Display</label>
+                    <input type="text" id="modal-proj-catLabel" class="admin-input" value="${proj.catLabel}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Link Text Display</label>
+                    <input type="text" id="modal-proj-linkText" class="admin-input" value="${proj.linkText}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Link URL</label>
+                    <input type="text" id="modal-proj-linkUrl" class="admin-input" value="${proj.linkUrl || ''}" />
+                </div>
+            `;
+            document.getElementById('admin-edit-item-modal').classList.add('open');
+        }
+
+        function deleteProject(idx) {
+            if (confirm('Delete this project?')) {
+                portfolioData.projects.splice(idx, 1);
+                renderProjectsList();
+            }
+        }
+
+
+        /* ── SKILLS ACTIONS ── */
+        function renderSkillsGroups() {
+            const list = document.getElementById('admin-skills-group-list');
+            list.innerHTML = '';
+            portfolioData.skills.forEach((grp, idx) => {
+                list.innerHTML += `
+                    <div class="admin-form-group" style="border: 1px solid var(--border); padding: 10px; border-radius: 4px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+                            <span style="font-family:var(--font-mono); font-size:11px; color:var(--cyan);">${grp.category}</span>
+                            <button class="editor-mini-btn danger" style="width:20px; height:20px; font-size:9px;" onclick="deleteSkillsGroup(${idx})">✕</button>
+                        </div>
+                        <input type="text" id="skills-group-items-${idx}" class="admin-input" value="${grp.items.join(', ')}" onchange="updateSkillsGroupItems(${idx}, this.value)" />
+                    </div>
+                `;
+            });
+            list.innerHTML += `<button class="admin-btn admin-btn-secondary" style="font-size:10px; padding:6px;" onclick="addSkillsGroup()">+ Add Skill Group</button>`;
+        }
+
+        function updateSkillsGroupItems(idx, value) {
+            portfolioData.skills[idx].items = value.split(',').map(s => s.trim()).filter(s => s);
+        }
+
+        function addSkillsGroup() {
+            const name = prompt('Enter new Skill Group category name (e.g. Cloud Deployments):');
+            if (name) {
+                portfolioData.skills.push({ category: name, items: [] });
+                renderSkillsGroups();
+            }
+        }
+
+        function deleteSkillsGroup(idx) {
+            if (confirm(`Delete the "${portfolioData.skills[idx].category}" group?`)) {
+                portfolioData.skills.splice(idx, 1);
+                renderSkillsGroups();
+            }
+        }
+
+
+        /* ── CERTIFICATIONS ACTIONS ── */
+        function renderCertsList() {
+            const list = document.getElementById('admin-certs-list');
+            list.innerHTML = '';
+            portfolioData.certifications.forEach((cert, idx) => {
+                list.innerHTML += `
+                    <div class="editor-list-item">
+                        <div>
+                            <div class="editor-list-item-title">${cert.name}</div>
+                            <div class="editor-list-item-sub">${cert.issuer} (${cert.status})</div>
+                        </div>
+                        <div class="editor-actions">
+                            <button class="editor-mini-btn" onclick="openCertEditModal(${idx})">✎</button>
+                            <button class="editor-mini-btn danger" onclick="deleteCert(${idx})">🗑</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openCertAddModal() {
+            editingType = 'certifications';
+            editingIndex = -1;
+            document.getElementById('edit-item-modal-title').textContent = 'Add Certification';
+            document.getElementById('edit-item-modal-body').innerHTML = `
+                <div class="admin-form-group">
+                    <label>Certification Name</label>
+                    <input type="text" id="modal-cert-name" class="admin-input" placeholder="e.g. AWS Machine Learning Specialty" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Issuer</label>
+                    <input type="text" id="modal-cert-issuer" class="admin-input" placeholder="e.g. Amazon Web Services" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Status</label>
+                    <input type="text" id="modal-cert-status" class="admin-input" placeholder="Verified / Issued" value="Verified" />
+                </div>
+            `;
+            document.getElementById('admin-edit-item-modal').classList.add('open');
+        }
+
+        function openCertEditModal(idx) {
+            editingType = 'certifications';
+            editingIndex = idx;
+            const cert = portfolioData.certifications[idx];
+            document.getElementById('edit-item-modal-title').textContent = 'Edit Certification';
+            document.getElementById('edit-item-modal-body').innerHTML = `
+                <div class="admin-form-group">
+                    <label>Certification Name</label>
+                    <input type="text" id="modal-cert-name" class="admin-input" value="${cert.name}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Issuer</label>
+                    <input type="text" id="modal-cert-issuer" class="admin-input" value="${cert.issuer}" />
+                </div>
+                <div class="admin-form-group">
+                    <label>Status</label>
+                    <input type="text" id="modal-cert-status" class="admin-input" value="${cert.status}" />
+                </div>
+            `;
+            document.getElementById('admin-edit-item-modal').classList.add('open');
+        }
+
+        function deleteCert(idx) {
+            if (confirm('Delete this certification?')) {
+                portfolioData.certifications.splice(idx, 1);
+                renderCertsList();
+            }
+        }
+
+
+        /* ── MODAL OK ACTION ── */
+        function saveItemFromModal() {
+            if (editingType === 'meta') {
+                const label = document.getElementById('modal-meta-label').value;
+                const value = document.getElementById('modal-meta-value').value;
+                const highlight = document.getElementById('modal-meta-highlight').checked;
+                const isEmail = document.getElementById('modal-meta-email').checked;
+
+                if (!label || !value) {
+                    alert('Label and value required!');
+                    return;
+                }
+
+                const item = { label, value, highlight, isEmail };
+                if (editingIndex === -1) {
+                    portfolioData.about.meta.push(item);
+                } else {
+                    portfolioData.about.meta[editingIndex] = item;
+                }
+                renderAboutMetaList();
+            }
+            
+            else if (editingType === 'experience') {
+                const company = document.getElementById('modal-exp-company').value;
+                const companyShort = document.getElementById('modal-exp-companyShort').value;
+                const role = document.getElementById('modal-exp-role').value;
+                const team = document.getElementById('modal-exp-team').value;
+                const period = document.getElementById('modal-exp-period').value;
+                const tagsRaw = document.getElementById('modal-exp-tags').value;
+
+                if (!company || !role || !period) {
+                    alert('Company, Role, and Period are required!');
+                    return;
+                }
+
+                const tags = tagsRaw.split(',').map(s => s.trim()).filter(s => s);
+                const item = { company, companyShort, role, team, period, tags };
+                
+                if (editingIndex === -1) {
+                    portfolioData.experience.push(item);
+                } else {
+                    portfolioData.experience[editingIndex] = item;
+                }
+                renderExperienceList();
+            }
+
+            else if (editingType === 'projects') {
+                const name = document.getElementById('modal-proj-name').value;
+                const status = document.getElementById('modal-proj-status').value;
+                const statusClass = document.getElementById('modal-proj-statusClass').value;
+                const desc = document.getElementById('modal-proj-desc').value;
+                const stackRaw = document.getElementById('modal-proj-stack').value;
+                const cat = document.getElementById('modal-proj-cat').value;
+                const catLabel = document.getElementById('modal-proj-catLabel').value;
+                const linkText = document.getElementById('modal-proj-linkText').value;
+                const linkUrl = document.getElementById('modal-proj-linkUrl').value;
+
+                if (!name || !status || !desc) {
+                    alert('Project Name, Status, and Description are required!');
+                    return;
+                }
+
+                const stack = stackRaw.split(',').map(s => s.trim()).filter(s => s);
+                const item = { name, status, statusClass, desc, stack, cat, catLabel, linkText, linkUrl };
+
+                if (editingIndex === -1) {
+                    portfolioData.projects.push(item);
+                } else {
+                    portfolioData.projects[editingIndex] = item;
+                }
+                renderProjectsList();
+            }
+
+            else if (editingType === 'certifications') {
+                const name = document.getElementById('modal-cert-name').value;
+                const issuer = document.getElementById('modal-cert-issuer').value;
+                const status = document.getElementById('modal-cert-status').value;
+
+                if (!name || !issuer || !status) {
+                    alert('Name, Issuer, and Status are required!');
+                    return;
+                }
+
+                const item = { name, issuer, status };
+                if (editingIndex === -1) {
+                    portfolioData.certifications.push(item);
+                } else {
+                    portfolioData.certifications[editingIndex] = item;
+                }
+                renderCertsList();
+            }
+
+            closeEditItemModal();
+        }
+    </script>
+</body>
+
+</html>
