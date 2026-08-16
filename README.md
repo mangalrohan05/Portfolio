@@ -15,16 +15,6 @@ I am a final-year B.E. Information Technology student at MBM University, Jodhpur
   - **AI Engineer Intern** at Wepitch (Counterfeit detection pipelines, feature matching, OCR)
   - **Full Stack Engineer Intern** at Xebia (MERN Stack REST APIs)
 
----
-
-## 🎨 Design & Interactive Features
-
-- **Neural Network Simulation**: A native HTML5 `<canvas>` rendering engine that draws an animated particle network behind the hero text, responding dynamically to resizing.
-- **Typewriter Terminal**: A dynamic console text effect cycling through active engineering disciplines.
-- **Responsive Layout**: Designed from scratch using vanilla CSS Grid and Flexbox, optimized for all screen form-factors (Mobile, Tablet, Desktop).
-- **Project Filtering**: Interactive navigation sorting projects instantly between **AI / ML** and **Web / Full Stack** categories.
-- **Scroll Reveal Animations**: Micro-animations using custom `IntersectionObserver` instances to fade-in sections cleanly as the visitor scrolls down.
-- **Typography**: Curated fonts using Google Fonts API—**Space Grotesk** for display headers, **Inter** for readable body copy, and **JetBrains Mono** for technical/metric labels.
 
 ---
 
