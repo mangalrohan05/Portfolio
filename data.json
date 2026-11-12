@@ -213,6 +213,23 @@
       "catLabel": "Web · Full Stack",
       "linkText": "GitHub ↗",
       "linkUrl": "https://github.com/mangalrohan05"
+    },
+    {
+      "name": "SplitTrack",
+      "status": "Active",
+      "statusClass": "status-active",
+      "desc": "Android app for tracking group expenses (trips, roommates, events), splitting costs fairly and recording direct payments between members until debts are settled. Includes category filters, bulk expense entry, balance charts and Google sign-in with cloud sync.",
+      "stack": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Cloud Firestore",
+        "Provider"
+      ],
+      "cat": "mobile",
+      "catLabel": "Mobile · Android",
+      "linkText": "Download APK ↓",
+      "linkUrl": "https://github.com/mangalrohan05/trip-expense-tracker/releases/latest/download/app-release.apk"
     }
   ],
   "skills": [
