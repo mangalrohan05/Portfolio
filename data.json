@@ -13,14 +13,15 @@
       "Computer Vision Engineer",
       "NLP & Transformer Engineer",
       "AI Pipeline Builder",
-      "ML Engineer in Progress"
+      "ML Engineer in Progress",
+      "Full-Stack AI Engineer"
     ],
-    "description": "Building production-ready AI pipelines at the intersection of Computer Vision and NLP. Currently working on counterfeit detection at Wepitch — OpenCLIP, YOLOv8, Qwen-VLM.",
+    "description": "Building production-ready AI pipelines at the intersection of Computer Vision and NLP. Currently working on counterfeit detection at Wepitch — OpenCLIP, YOLOv8, Qwen-VLM, and building full-stack AI products (AI LMS) with RAG, pgvector, and LLMs.",
     "githubUrl": "https://github.com/mangalrohan05",
     "linkedInUrl": "https://www.linkedin.com/in/rohanm0805",
     "stats": [
       {
-        "num": "5",
+        "num": "6",
         "suffix": "+",
         "label": "AI Projects"
       },
@@ -110,6 +111,30 @@
     }
   ],
   "projects": [
+    {
+      "name": "AI Learning Management System",
+      "status": "Live",
+      "statusClass": "status-active",
+      "desc": "Full-stack AI-powered LMS — RAG-based PDF/text chat, background quiz generation (1–25 MCQs with difficulty control), Groq Whisper audio transcription, Gemini study planner, assignment grader, and explore/search with vector similarity. Next.js 15 frontend + Express TypeScript backend on Neon PostgreSQL with pgvector.",
+      "stack": [
+        "Next.js 15",
+        "TypeScript",
+        "Express",
+        "Prisma",
+        "Neon PostgreSQL",
+        "pgvector",
+        "LangChain",
+        "Google Gemini",
+        "Groq Whisper",
+        "Clerk",
+        "Vercel",
+        "Render"
+      ],
+      "cat": "ai",
+      "catLabel": "AI · Full Stack",
+      "linkText": "Live ↗",
+      "linkUrl": "https://ai-learning-mgmt.vercel.app"
+    },
     {
       "name": "Authentiq",
       "status": "Confidential",
