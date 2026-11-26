@@ -2,7 +2,7 @@
 
 A premium, interactive, and high-performance developer portfolio website designed with a dark, cyberpunk intelligence-terminal aesthetic. 
 
-Live Link: [mangalrohan05.github.io](https://mangalrohan05.github.io) (or your deployment link)
+🚀 **Live:** [rmrohan-portfolio.vercel.app](https://rmrohan-portfolio.vercel.app)
 
 ---
 
